@@ -9,16 +9,20 @@ def yahtzee():
     dice3 = random.randrange(1, 7)
     dice4 = random.randrange(1, 7)
     dice5 = random.randrange(1, 7)
-    print(dice1, dice2, dice3, dice4, dice5)
+    print("==========================================\n         Welcome to CS 2110 Yahtzee! \n==========================================")
+    print("              How to Play \n    Type the position of the dice you \n     would like to keep in brackets, \n spaced with commas (ex. [1,3] or 'all')")
+    print("==========================================")
+    print('Your Dice = ' +str(dice1)+' '+str(dice2)+' '+str(dice3)+' '+str(dice4)+' '+str(dice5))
     
     #present five dice to player and ask which ones to roll again
-    answer1 = eval(input("Which dice would you like to keep? (ex: [1,3] or 'all') "))
+    answer1 = eval(input("Which dice would you like to keep?\n"))
     
     #skip if all five is the answer
     if answer1 == 'all':
         print('Final Roll = '+str(dice1)+' '+str(dice2)+' '+str(dice3)+' '+str(dice4)+' '+str(dice5))
         savedDice = {'dice1':dice1, 'dice2':dice2, 'dice3':dice3, 'dice4':dice4, 'dice5':dice5}
-        return checkResults(savedDice)
+        print(checkResults(savedDice))
+        return playAgain()
     else:
         #save the other dice and randomly generate how ever many they want to keep
         savedDice = {'dice1':dice1, 'dice2':dice2, 'dice3':dice3, 'dice4':dice4, 'dice5':dice5} #dictionary of saved results
@@ -34,7 +38,7 @@ def yahtzee():
                 savedDice['dice4'] = dice4
             elif num == 5:
                 savedDice['dice5'] = dice5
-        print('Roll 1 = ' +str(dice1)+' '+str(dice2)+' '+str(dice3)+' '+str(dice4)+' '+str(dice5))
+        #print('Roll 1 = ' +str(dice1)+' '+str(dice2)+' '+str(dice3)+' '+str(dice4)+' '+str(dice5))
     
         #take the other dice not in the response and re-roll
         d = [1,2,3,4,5]
@@ -59,14 +63,15 @@ def yahtzee():
             elif dice == 5:
                 dice5 = random.randrange(1,7)
                 savedDice['dice5'] = dice5
-        print(dice1, dice2, dice3, dice4, dice5)
+        print('\nYour Dice = '+str(dice1)+' '+str(dice2)+' '+str(dice3)+' '+str(dice4)+' '+str(dice5)) 
     
         #repeat
-        answer2 = eval(input("Which dice would you like to keep? (ex: [1,3], 'all') "))
+        answer2 = eval(input("Which dice would you like to keep?\n"))
         
         if answer2 == 'all':
             print('Final Roll = '+str(dice1)+' '+str(dice2)+' '+str(dice3)+' '+str(dice4)+' '+str(dice5))
-            return checkResults(savedDice)
+            print(checkResults(savedDice))
+            return playAgain()
         else:
             for num in answer2:
                 if num == 1:
@@ -79,7 +84,7 @@ def yahtzee():
                     savedDice['dice4'] = dice4
                 elif num == 5:
                     savedDice['dice5'] = dice5
-            print('Roll 2 = '+str(dice1)+' '+str(dice2)+' '+str(dice3)+' '+str(dice4)+' '+str(dice5))    
+            #print('Roll 2 = '+str(dice1)+' '+str(dice2)+' '+str(dice3)+' '+str(dice4)+' '+str(dice5))    
         
             #second re-roll
             d = [1,2,3,4,5]
@@ -104,9 +109,10 @@ def yahtzee():
                 elif dice == 5:
                     dice5 = random.randrange(1,7)
                     savedDice['dice5'] = dice5
-            print(dice1, dice2, dice3, dice4, dice5)        
-            print('Final Roll = '+str(dice1)+' '+str(dice2)+' '+str(dice3)+' '+str(dice4)+' '+str(dice5))
-            return checkResults(savedDice)
+            #print(dice1, dice2, dice3, dice4, dice5)        
+            print('\nYour Dice = '+str(dice1)+' '+str(dice2)+' '+str(dice3)+' '+str(dice4)+' '+str(dice5))
+            print(checkResults(savedDice))
+            return playAgain()
 
 def checkResults(dice):
     """ This method checks the results of your saved roll, printing the highest value result """
@@ -142,3 +148,10 @@ def checkResults(dice):
    
     else:
         return "You Lose"
+    
+def playAgain():
+    pA = input("Play Again? (Y or N)\n")
+    if pA == "Y":
+        yahtzee()
+    else:
+        return "Thanks for Playing!"
