@@ -112,26 +112,32 @@ def checkResults(dice):
     """ This method checks the results of your saved roll, printing the highest value result """
 
     diceList = []
-    for i in dice: # appends dictionary values to a list
+    for i in dice:
+        # appends dictionary values to a list
         diceList.append(dice[i])
     diceList.sort() # sorts list numerically
 
-    if diceList[0] == diceList[4]: # compares first and last index of the list
+    if diceList[0] == diceList[4]:
+        # compares first and last index of the list
         return "You got a Yahtzee"
     
-    elif len(set(diceList)) == 5 and diceList[0] == 2 and diceList[4] == 6: # checks if the list is ordered between 2-6
+    elif len(set(diceList)) == 5 and diceList[0] == 2 and diceList[4] == 6:
+        # checks if the list is ordered between 2-6
         return "You got a High Straight" 
     
-    elif len(set(diceList)) == 5 and diceList[4] == 5: # checks if the list is ordered between 1-5
+    elif len(set(diceList)) == 5 and diceList[4] == 5:
+        # checks if the list is ordered between 1-5
         return "You got a Low Straight"
     
     elif len(set(diceList)) == 2: # checks if there is only 2 unique values in the list
-        if diceList[0] != diceList[3] and diceList[1] != diceList[4]: # checks if there is a more than one of each unique value
+        if diceList[0] != diceList[3] and diceList[1] != diceList[4]:
+            # checks if there is a more than one of each unique value
             return "You got a Full House"
         else:
             return "You got Four of a Kind"
     
-    elif diceList[0] == diceList[2] or diceList[1] == diceList[3] or diceList[2] == diceList[4]: # checks for three of the same number
+    elif diceList[0] == diceList[2] or diceList[1] == diceList[3] or diceList[2] == diceList[4]:
+        # checks for three of the same number
         return "You got Three of a Kind" 
    
     else:
