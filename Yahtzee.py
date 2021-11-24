@@ -16,7 +16,9 @@ def yahtzee():
     
     #skip if all five is the answer
     if answer1 == 'all':
-        print('Final roll = '+str(dice1)+' '+str(dice2)+' '+str(dice3)+' '+str(dice4)+' '+str(dice5))
+        print('Final Roll = '+str(dice1)+' '+str(dice2)+' '+str(dice3)+' '+str(dice4)+' '+str(dice5))
+        savedDice = {'dice1':dice1, 'dice2':dice2, 'dice3':dice3, 'dice4':dice4, 'dice5':dice5}
+        return checkResults(savedDice)
     else:
         #save the other dice and randomly generate how ever many they want to keep
         savedDice = {'dice1':dice1, 'dice2':dice2, 'dice3':dice3, 'dice4':dice4, 'dice5':dice5} #dictionary of saved results
@@ -32,7 +34,7 @@ def yahtzee():
                 savedDice['dice4'] = dice4
             elif num == 5:
                 savedDice['dice5'] = dice5
-        print('turn1 = ' +str(savedDice))
+        print('Roll 1 = ' +str(dice1)+' '+str(dice2)+' '+str(dice3)+' '+str(dice4)+' '+str(dice5))
     
         #take the other dice not in the response and re-roll
         d = [1,2,3,4,5]
@@ -63,7 +65,8 @@ def yahtzee():
         answer2 = eval(input("Which dice would you like to keep? (ex: [1,3], 'all') "))
         
         if answer2 == 'all':
-            print('Final roll = '+str(dice1)+' '+str(dice2)+' '+str(dice3)+' '+str(dice4)+' '+str(dice5))
+            print('Final Roll = '+str(dice1)+' '+str(dice2)+' '+str(dice3)+' '+str(dice4)+' '+str(dice5))
+            return checkResults(savedDice)
         else:
             for num in answer2:
                 if num == 1:
@@ -76,7 +79,7 @@ def yahtzee():
                     savedDice['dice4'] = dice4
                 elif num == 5:
                     savedDice['dice5'] = dice5
-            print('turn2 = '+str(savedDice))    
+            print('Roll 2 = '+str(dice1)+' '+str(dice2)+' '+str(dice3)+' '+str(dice4)+' '+str(dice5))    
         
             #second re-roll
             d = [1,2,3,4,5]
@@ -102,12 +105,33 @@ def yahtzee():
                     dice5 = random.randrange(1,7)
                     savedDice['dice5'] = dice5
             print(dice1, dice2, dice3, dice4, dice5)        
-            print('final result = '+str(savedDice))
-        
+            print('Final Roll = '+str(dice1)+' '+str(dice2)+' '+str(dice3)+' '+str(dice4)+' '+str(dice5))
+            return checkResults(savedDice)
 
-#store final five numbers maybe total them for the results section
+def checkResults(dice):
+    """ This method checks the results of your saved roll, printing the highest value result """
+    diceList = []
+    for i in dice:
+        diceList.append(dice[i])
+    diceList.sort()
 
-
-def checkResults():
-    # code here
-    return
+    if diceList[0] == diceList[4]:
+        return "You got a Yahtzee"
+    
+    elif len(set(diceList)) == 5 and diceList[0] == 2 and diceList[4] == 6:
+        return "You got a High Straight" 
+    
+    elif len(set(diceList)) == 5 and diceList[4] == 5:
+        return "You got a Low Straight"
+    
+    elif len(set(diceList)) == 2:
+        if diceList[0] != diceList[3] and diceList[1] != diceList[4]:
+            return "You got a Full House"
+        else:
+            return "You got Four of a Kind"
+    
+    elif diceList[0] == diceList[2] or diceList[1] == diceList[3] or diceList[2] == diceList[4]:
+        return "You got Three of a Kind" 
+   
+    else:
+        return "You Lose"
