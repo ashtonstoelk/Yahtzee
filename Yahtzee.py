@@ -1,20 +1,12 @@
-''' Final Assignment 
 
-Our Yahtzee assignment can be done here
+import random
 
-'''
+
+# start function
 def yahtzee():
-    #code here
+    #Suzanne's code
     return
 
-def diceRolling():
-    #code here
-    return
-    
 def checkResults():
-    #code here
+    # code here
     return
-
-#new code
-
-#more code
