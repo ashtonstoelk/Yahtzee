@@ -9,8 +9,8 @@ def yahtzee():
     dice3 = random.randrange(1, 7)
     dice4 = random.randrange(1, 7)
     dice5 = random.randrange(1, 7)
-    print("==========================================\n         Welcome to CS 2110 Yahtzee! \n==========================================")
-    print("              How to Play \n    Type the position of the dice you \n     would like to keep in brackets, \n spaced with commas (ex. [1,3] or 'all')")
+    print("==========================================\n        Welcome to CS 2110 Yahtzee! \n==========================================")
+    print("                How to Play \n    Type the position of the dice you \n     would like to keep in brackets, \n spaced with commas (ex. [1,3] or 'all')")
     print("==========================================")
     print('Your Dice = ' +str(dice1)+' '+str(dice2)+' '+str(dice3)+' '+str(dice4)+' '+str(dice5))
     
