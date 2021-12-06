@@ -16,6 +16,9 @@ def yahtzee():
     
     #present five dice to player and ask which ones to roll again
     answer1 = eval(input("Which dice would you like to keep?\n"))
+    for i in answer1:
+            if i != 1 or i != 2 or i != 3 or i != 4 or i != 5:
+                print("Please Enter Integers Only")
     
     #skip if all five is the answer
     if answer1 == 'all':
@@ -67,6 +70,9 @@ def yahtzee():
     
         #repeat
         answer2 = eval(input("Which dice would you like to keep?\n"))
+        for i in answer2:
+            if i != 1 or i != 2 or i != 3 or i != 4 or i != 5:
+                print("Please Enter Integers Only")
         
         if answer2 == 'all':
             print('Final Roll = '+str(dice1)+' '+str(dice2)+' '+str(dice3)+' '+str(dice4)+' '+str(dice5))
